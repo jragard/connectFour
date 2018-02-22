@@ -5,7 +5,7 @@
     
 }
 
-#column1 {
+#column1, #column2, #column3, #column4, #column5, #column6, #column7 {
     border: 1px solid black;
     height: 460px;
     width: 100px;
