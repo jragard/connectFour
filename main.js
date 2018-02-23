@@ -49,6 +49,7 @@ handleClick = function (event) {
         checkHorizontal();
         checkVertical();
         checkDiagDownRight();
+        checkDiagDownLeft();
 
     } else {
         col.appendChild(blackDisc);
@@ -71,6 +72,7 @@ handleClick = function (event) {
         checkHorizontal();
         checkVertical();
         checkDiagDownRight();
+        checkDiagDownLeft();
     }
 }
 
@@ -90,8 +92,8 @@ for (let i = 0; i < cols.length; i++) {
 //               |
 //     [0, 0, 0, 0, 0, 0, 0], //boardPos[0]
 //     [0, 0, 0, 0, 0, 0, 0], //boardPos[1]
-//  -- [0, 0, 0, 0, 0, 0, 0], //boardPos[2]
-//     [0, 0, 0, 0, 0, 0, 0], //boardPos[3]
+//     [0, 0, 0, 0, 0, 0, 0], //boardPos[2]
+//  -- [0, 0, 0, 0, 0, 0, 0], //boardPos[3]
 //     [0, 0, 0, 0, 0, 0, 0], //boardPos[4]
 //     [0, 0, 0, 0, 0, 0, 0] //boardPos[5]
 // ]
@@ -121,7 +123,7 @@ function checkVertical() {
     for (y = 0; y < edgeY; y++) {
         let row = boardPos[y];
 
-        for (let x = 0; x < boardPos.length; x++) {
+        for (let x = 0; x < boardPos[0].length; x++) {
             let cell = row[x];
 
             if (cell !== 0) {
@@ -149,6 +151,26 @@ function checkDiagDownRight() {
                 if (cell === boardPos[y + 1][x + 1] && cell === boardPos[y + 2][x + 2] && cell === boardPos[y + 3][x + 3]) {
                     let destination = document.getElementById("winMessage");
                     let text = document.createTextNode("You Win!");
+
+                    destination.appendChild(text);
+                }
+            }
+        }
+    }
+}
+
+function checkDiagDownLeft() {
+    for (let y = 3; y < boardPos.length; y++) {
+        let row = boardPos[y];
+
+        for (let x = 0; x < edgeX; x++) {
+            let cell = row[x];
+
+            if (cell != 0) {
+
+                if (cell === boardPos[y - 1][x + 1] && cell === boardPos[y - 2][x + 2] && cell === boardPos[y - 3][x + 3]) {
+                    let destination = document.getElementById("winMessage");
+                    let text = document.createTextNode("You Win");
 
                     destination.appendChild(text);
                 }
