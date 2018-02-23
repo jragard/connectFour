@@ -1,19 +1,16 @@
 let boardPos = [
-    [0, 0, 0, 0, 0, 0, 0], //boardPos[0]
-    [0, 0, 0, 0, 0, 0, 0], //boardPos[1]
-    [0, 0, 0, 0, 0, 0, 0], //boardPos[2]
-    [0, 0, 0, 0, 0, 0, 0], //boardPos[3]
-    [0, 0, 0, 0, 0, 0, 0], //boardPos[4]
-    [0, 0, 0, 0, 0, 0, 0] //boardPos[5]
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0]
 ]
 
 const edgeX = boardPos[0].length - 3;
 const edgeY = boardPos.length - 3;
 
 let colPos = [0, 0, 0, 0, 0, 0, 0];
-
-// let currentPlayer = "Red";
-// let nextPlayer = "Black";
 
 let redPlayerTurn = true;
 let blackPlayerTurn = false;
@@ -33,7 +30,6 @@ handleClick = function (event) {
         col.appendChild(redDisc)
         redPlayerTurn = false;
         blackPlayerTurn = true;
-        // currentPlayer = nextPlayer;
 
         for (let i = boardPos.length - 1; i >= 0; i--) {
             if (boardPos[i][col.id] === 0) {
@@ -55,7 +51,6 @@ handleClick = function (event) {
         col.appendChild(blackDisc);
         redPlayerTurn = true;
         blackPlayerTurn = false;
-        // currentPlayer = nextPlayer;
 
         for (let i = boardPos.length - 1; i >= 0; i--) {
 
@@ -82,37 +77,12 @@ for (let i = 0; i < cols.length; i++) {
     cols[i].addEventListener('click', handleClick);
 }
 
-
-
-
-// Nested loop for finding n-in-a-row
-
-// let boardPos = [
-
-//               |
-//     [0, 0, 0, 0, 0, 0, 0], //boardPos[0]
-//     [0, 0, 0, 0, 0, 0, 0], //boardPos[1]
-//     [0, 0, 0, 0, 0, 0, 0], //boardPos[2]
-//  -- [0, 0, 0, 0, 0, 0, 0], //boardPos[3]
-//     [0, 0, 0, 0, 0, 0, 0], //boardPos[4]
-//     [0, 0, 0, 0, 0, 0, 0] //boardPos[5]
-// ]
-
 function checkHorizontal() {
     for (let y = 0; y < boardPos.length; y++) {
-        let row = boardPos[y];
-
         for (let x = 0; x < edgeX; x++) {
-            let cell = row[x];
-
-            if (cell !== 0) {
-
-                if (cell === boardPos[y][x + 1] && cell === boardPos[y][x + 2] && cell === boardPos[y][x + 3]) {
-                    // function printWin()
-                    let destination = document.getElementById("winMessage");
-                    let text = document.createTextNode("You Win!");
-
-                    destination.appendChild(text);
+            if (boardPos[y][x] !== 0) {
+                if (boardPos[y][x] === boardPos[y][x + 1] && boardPos[y][x] === boardPos[y][x + 2] && boardPos[y][x] === boardPos[y][x + 3]) {
+                    printWin();
                 }
             }
         }
@@ -129,10 +99,10 @@ function checkVertical() {
             if (cell !== 0) {
 
                 if (cell === boardPos[y + 1][x] && cell === boardPos[y + 2][x] && cell === boardPos[y + 3][x]) {
-                    let destination = document.getElementById("winMessage");
-                    let text = document.createTextNode("You Win!");
-
-                    destination.appendChild(text);
+                    // let destination = document.getElementById("winMessage");
+                    // let text = document.createTextNode("You Win!");
+                    // destination.appendChild(text);
+                    printWin();
                 }
             }
         }
@@ -149,10 +119,11 @@ function checkDiagDownRight() {
             if (cell !== 0) {
 
                 if (cell === boardPos[y + 1][x + 1] && cell === boardPos[y + 2][x + 2] && cell === boardPos[y + 3][x + 3]) {
-                    let destination = document.getElementById("winMessage");
-                    let text = document.createTextNode("You Win!");
+                    // let destination = document.getElementById("winMessage");
+                    // let text = document.createTextNode("You Win!");
+                    // destination.appendChild(text);
 
-                    destination.appendChild(text);
+                    printWin();
                 }
             }
         }
@@ -169,20 +140,19 @@ function checkDiagDownLeft() {
             if (cell != 0) {
 
                 if (cell === boardPos[y - 1][x + 1] && cell === boardPos[y - 2][x + 2] && cell === boardPos[y - 3][x + 3]) {
-                    let destination = document.getElementById("winMessage");
-                    let text = document.createTextNode("You Win");
+                    // let destination = document.getElementById("winMessage");
+                    // let text = document.createTextNode("You Win");
+                    // destination.appendChild(text);
 
-                    destination.appendChild(text);
+                    printWin();
                 }
             }
         }
     }
 }
 
-
-
-// function printWin () {
-//     let destination = document.getElementById("winMessage");
-//     let text = document.createTextNode("You Win!");
-//     destination.appendChild(text);
-// }
+function printWin() {
+    let destination = document.getElementById("winMessage");
+    let text = document.createTextNode("You Win!");
+    destination.appendChild(text);
+}
