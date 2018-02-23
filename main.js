@@ -1,92 +1,86 @@
-let board = [
-    [0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0]
+// y = colPos
+// x = col.id
+
+let boardPos = [
+    [0, 0, 0, 0, 0, 0, 0], //boardPos[0]
+    [0, 0, 0, 0, 0, 0, 0], //boardPos[1]
+    [0, 0, 0, 0, 0, 0, 0], //boardPos[2]
+    [0, 0, 0, 0, 0, 0, 0], //boardPos[3]
+    [0, 0, 0, 0, 0, 0, 0], //boardPos[4]
+    [0, 0, 0, 0, 0, 0, 0]  //boardPos[5]
 ]
+        //    1  2  3  4  5  6  7
+let colPos = [0, 0, 0, 0, 0, 0, 0];
+
+// colPos[col.id] is Disc Count
+
 
 var redPlayerTurn = true;
 var blackPlayerTurn = false;
-let discCount = 0;
 
 handleClick = function (event) {
 
-    // let discCount = 0;
+    var col = event.target;
 
     var redDisc = document.createElement("div");
     redDisc.className = "red";
     var blackDisc = document.createElement("div");
     blackDisc.className = "black";
     
+    colPos[col.id]++;
     
     if (redPlayerTurn === true) {
-        var destination = document.getElementById("column1");
-        destination.appendChild(redDisc);
+        col.appendChild(redDisc)
         redPlayerTurn = false;
         blackPlayerTurn = true;
-        discCount++;
+        
+    
+      
+      for (let i = boardPos.length - 1; i >= 0; i--) {  
+        if (boardPos[i][col.id] === 0) {
+            boardPos[i][col.id] = 1;
+            break;
+           }
 
-        if (discCount === 6) {
-            col1.removeEventListener('click', handleClick); 
-         }
+            //    break;
+            // boardPos[i][col.id] = 1;
+            console.log(boardPos[5]);
+          
+      }
+        
+        if (colPos[col.id] === 6) {
+            col.removeEventListener('click', handleClick);
+        }
     }
 
     else {
-        var destination = document.getElementById("column1");
-        destination.appendChild(blackDisc);
+        col.appendChild(blackDisc);
         redPlayerTurn = true;
         blackPlayerTurn = false;
-        discCount++;
 
-        if (discCount === 6) {
-            col1.removeEventListener('click', handleClick); 
-         }
+        for (let i = boardPos.length - 1; i >= 0; i--) {
+           
+            if (boardPos[i][col.id] === 0) {
+               boardPos[i][col.id] = 2;
+               break;
+           }
+
+             console.log(boardPos[5]);
+        }
+        
+        if (colPos[col.id] === 6) {
+            col.removeEventListener('click', handleClick);
+        }
+        
     }
-
-    
-
-    // if (discCount === 6) {
-    //     col1.removeEventListener('click', handleClick); 
-    //  }
-
 }
 
-var col1 = document.querySelector("#column1");
-
-col1.addEventListener('click', handleClick);
 
 
+var cols = document.querySelectorAll("#board .col");
 
-// col1.onclick = function () {
+for (let i = 0; i < cols.length; i++) {
+    cols[i].addEventListener('click', handleClick);
+}    
 
-//     let discCount = 0;
 
-//     var redDisc = document.createElement("div");
-//     redDisc.className = "red";
-//     var blackDisc = document.createElement("div");
-//     blackDisc.className = "black";
-    
-    
-//     if (redPlayerTurn === true) {
-//         var destination = document.getElementById("column1");
-//         destination.appendChild(redDisc);
-//         redPlayerTurn = false;
-//         blackPlayerTurn = true;
-//         discCount++;
-
-//         if (discCount === 6) {
-            
-//         }
-//     }
-
-//     else {
-//         var destination = document.getElementById("column1");
-//         destination.appendChild(blackDisc);
-//         redPlayerTurn = true;
-//         blackPlayerTurn = false;
-//     }
-
-    
-// }
