@@ -112,7 +112,7 @@ function checkDiagDownLeft() {
 
 function printWin() {
     let destination = document.getElementById("winMessage");
-    let text = document.createTextNode("YOU FUCKING WIN!");
+    let text = document.createTextNode("YOU WIN!");
     destination.appendChild(text);
 }
 
