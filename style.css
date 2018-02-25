@@ -1,6 +1,6 @@
 
 #board {
-    height: 800px;
+    height: 650px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -11,32 +11,43 @@
 .col {
     border-left: 1px solid black;
     border-bottom: 1px solid black;
-    border-right: 1px solid black;
-    height: 475px;
+    /* border-right: 1px solid black; */
+    height: 370px;
     width: 100px;
     display: flex;
     flex-direction: column-reverse;
     align-items: center;
     
+    
+}
+
+.red, .black {
+    width: 55px;
+    height: 55px;
+    border: 1px solid black;
+    border-radius: 30px;
+    pointer-events: none;
+    margin: 1px;
 }
 
 .red {
-    width: 55px;
-    height: 55px;
-    background-color: red;
-    border: 1px solid black;
-    border-radius: 30px;
-    pointer-events: none;
-    
+background-color: red;
 }
  
 .black {
-    width: 55px;
-    height: 55px;
     background-color: black;
-    border: 1px solid black;
-    border-radius: 30px;
-    pointer-events: none;
+}
+
+#winMessage {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
     
 }
+
+.six {
+    border-right: 1px solid black;
+}
+
 
