@@ -1,33 +1,41 @@
 
+
 #board {
     height: 650px;
     display: flex;
     align-items: center;
     justify-content: center;
-    
-    
+    /* background-color: #ffff99; */
+    float: none;
 }
 
 .col {
-    border-left: 1px solid black;
-    border-bottom: 1px solid black;
-    /* border-right: 1px solid black; */
-    height: 370px;
+    border-left: 2px solid black;
+    border-bottom: 2px solid black;
+    border-top: 2px solid black;
+    background-color: #ffff99;
+    height: 495px;
     width: 100px;
     display: flex;
     flex-direction: column-reverse;
     align-items: center;
-    
+    border-radius: 5px;
+    background-image: url("0002new.png");
+    background-repeat: repeat-y;
+    background-repeat: space;
+    background-position: center;
+    background-position: bottom 10px;
+   
     
 }
 
 .red, .black {
-    width: 55px;
-    height: 55px;
+    width: 75px;
+    height: 75px;
     border: 1px solid black;
-    border-radius: 30px;
+    border-radius: 40px;
     pointer-events: none;
-    margin: 1px;
+    margin: 3px;
 }
 
 .red {
@@ -47,7 +55,35 @@ background-color: red;
 }
 
 .six {
-    border-right: 1px solid black;
+    border-right: 2px solid black;
+    border-radius: 5px;
+    background-color: #ffff99;
+    background-image: url("0002new.png");
+    background-repeat: repeat-y;
+    background-repeat: space;
+    
 }
+
+/* .disc {
+    width: 45px;
+    height: 45px;
+    border: 1px solid black;
+    border-radius: 40px;
+    margin: 4px;
+    background-color: white;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+} */
+
+/* .piece1 {
+    width: 75px;
+    height: 75px;
+    border: 1px solid black;
+    border-radius: 40px;
+    background-color: red;
+} */
+
+
 
 

@@ -16,7 +16,7 @@ let firstPlayer = true;
 
 handleClick = function (event) {
     let playerNum;
-    let col = event.currentTarget;
+    let col = event.target;
 
     colPos[col.id]++;
 
@@ -43,7 +43,7 @@ for (let i = 0; i < cols.length; i++) {
 function swapPlayer(col) {
     let playerNum;
     let disc = document.createElement("div");
-
+    
     if (firstPlayer) {
         playerNum = 1;
         disc.className = "red";
@@ -57,9 +57,12 @@ function swapPlayer(col) {
         if (boardPos[y][col.id] === 0 || boardPos[y][col.id] === undefined) {
             boardPos[y][col.id] = playerNum;
             break;
+            
         }
     }
+
     col.appendChild(disc);
+    
 }
 
 function checkHorizontal() {
